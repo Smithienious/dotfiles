@@ -1,10 +1,10 @@
-Dotfiles for Pengwin
+Dotfiles for WSL
 ============================================================
 
 Credits
 -------------------
 
-Many of these scripts are taken from [pengwin-setup](https://github.com/WhitewaterFoundry/pengwin-setup).
+Some of these scripts are taken from [pengwin-setup](https://github.com/WhitewaterFoundry/pengwin-setup).
 
 Feedback
 -------------------

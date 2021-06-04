@@ -17,7 +17,8 @@ if [ -d "$HOME/.bin" ]; then
 fi
 
 # User configuration
-export GPG_TTY=$(tty)
+GPG_TTY=$(tty)
+export GPG_TTY
 echo "Did you know that:"
-whatis $(ls /bin | shuf -n 1)
+whatis "$(find /bin/ -maxdepth 1 -name '*' | shuf -n 1)"
 # eval "$(keychain --eval --agents ssh,gpg <ssh> <gpg>)"

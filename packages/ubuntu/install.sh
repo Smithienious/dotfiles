@@ -18,7 +18,5 @@ sudo apt install -y \
 . ./dotnet.sh
 # shellcheck source=nodejs.sh
 . ./nodejs.sh
-# shellcheck source=pyenv.sh
-. ./pyenv.sh
 
 sudo apt autoremove -y --purge

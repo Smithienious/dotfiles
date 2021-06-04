@@ -8,8 +8,10 @@ eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 
 # User configuration
-export GPG_TTY=$(tty)
-echo "Did you know that:"; whatis $(ls /bin | shuf -n 1)
+GPG_TTY=$(tty)
+export GPG_TTY
+echo "Did you know that:"
+whatis "$(find /bin/ -maxdepth 1 -name '*' | shuf -n 1)"
 # eval "$(keychain --eval --agents ssh,gpg <ssh> <gpg>)"
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -29,6 +31,7 @@ export ZSH="/home/$USER/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# shellcheck disable=SC2034
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
@@ -48,6 +51,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # DISABLE_AUTO_UPDATE="true"
 
 # Automatically update without prompting.
+# shellcheck disable=SC2034
 DISABLE_UPDATE_PROMPT="true"
 
 # Change how often to auto-update (in days).
@@ -66,11 +70,14 @@ DISABLE_UPDATE_PROMPT="true"
 # ENABLE_CORRECTION="true"
 
 # Display red dots whilst waiting for completion.
+# shellcheck disable=SC2034
 COMPLETION_WAITING_DOTS="true"
 
 # Disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
+# shellcheck disable=SC2034
 # much, much faster.
+# shellcheck disable=SC2034
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
@@ -79,6 +86,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
+# shellcheck disable=SC2034
 HIST_STAMPS="yyyy-mm-dd"
 
 # Use another custom folder than $ZSH/custom?
@@ -91,6 +99,7 @@ zstyle ':completion:*:*:docker-*:*' option-stacking yes
 # Choose between one [code, code-insiders or codium]
 # The following line will make the plugin to open VS Code Insiders
 # Invalid entries will be ignored, no aliases will be added
+# shellcheck disable=SC2034
 VSCODE=code-insiders
 
 # Which plugins would you like to load?
@@ -98,6 +107,7 @@ VSCODE=code-insiders
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+# shellcheck disable=SC2034
 plugins=(
   colored-man-pages
   command-not-found
@@ -113,13 +123,14 @@ plugins=(
   git-lfs
   gpg-agent
   jsontools
+  pyenv
   python
   vscode
   zsh-autosuggestions
   zsh-syntax-highlighting # Must be placed at last
 )
 
-source $ZSH/oh-my-zsh.sh
+source "$ZSH"/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -135,5 +146,3 @@ for DOTFILE in ~/.{zsh_functions,path,env,zsh_aliases,prompt,custom}; do
 done
 
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
-
-eval $(thefuck --alias)

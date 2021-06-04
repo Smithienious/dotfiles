@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+# `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
+# the `.git` directory, listing directories first. The output gets piped into
+# `less` with options to preserve color and line numbers, unless the output is
+# small enough for one screen.
+function tre() {
+  tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX
+}
+
+# Create a new directory and enter it
+function mkd() {
+  mkdir -p "$@" && cd "$@" || exit
+}
+
+# cd then ls
+function cl() {
+  DIR="$*"
+  # if no DIR given, go home
+  if [ $# -lt 1 ]; then
+    DIR=$HOME
+  fi
+  builtin cd "${DIR}" &&
+    # use your preferred ls command
+    ls -lFh
+}
+
+# Determine size of a file or total size of a directory
+function fs() {
+  local arg=-sbh
+  if [[ -n "$*" ]]; then
+    du $arg -- "$@"
+  else
+    du $arg .[^.]* -- *
+  fi
+}

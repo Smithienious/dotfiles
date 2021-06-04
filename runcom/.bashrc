@@ -118,7 +118,8 @@ for DOTFILE in ~/.{bash_functions,path,env,bash_aliases,prompt,custom}; do
 done
 
 # User configuration
-export GPG_TTY=$(tty)
+GPG_TTY=$(tty)
+export GPG_TTY
 echo "Did you know that:"
-whatis $(ls /bin | shuf -n 1)
+whatis "$(find /bin/ -maxdepth 1 -name '*' | shuf -n 1)"
 # eval "$(keychain --eval --agents ssh,gpg <ssh> <gpg>)"
