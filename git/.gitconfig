@@ -1,0 +1,56 @@
+[user]
+signingkey = 234A3C6CCF8846FC15991C1AB5A08FDB1282D170
+name = Hoang NGUYEN
+email = baauco@gmail.com
+
+[alias]
+loq = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+
+[branch]
+autosetuprebase = always
+
+[color]
+diff = auto
+status = auto
+branch = auto
+interactive = auto
+ui = true
+pager = true
+
+[color "branch"]
+current = yellow reverse
+local = yellow
+remote = green
+
+[color "diff"]
+meta = yellow
+frag = magenta
+old = red
+new = green
+
+[color "status"]
+added = yellow
+changed = green
+untracked = cyan
+
+[commit]
+gpsign = true
+gpgsign = true
+
+[core]
+excludesfile = ~/.gitignore_global
+
+[init]
+defaultBranch = main
+
+[push]
+default = simple
+
+[rerere]
+enabled = 1
+
+[filter "lfs"]
+clean = git-lfs clean -- %f
+smudge = git-lfs smudge -- %f
+process = git-lfs filter-process
+required = true
