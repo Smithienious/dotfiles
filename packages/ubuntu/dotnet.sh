@@ -9,7 +9,7 @@ function main {
   fi
   unset dist
 
-  curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor >microsoft.gpg
+  curl -SL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor >microsoft.gpg
   sudo cp microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
   rm microsoft.gpg
 

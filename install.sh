@@ -10,50 +10,56 @@ fi
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 if ! [[ -x "$(command -v zsh)" ]]; then
-  basepkg=(git git-lfs htop keychain most nano pinentry-tty shellcheck tree zsh)
+  basepkg=(git git-lfs htop keychain most nano pinentry-tty rsync tree zsh)
 
   if [[ -x "$(command -v apt)" ]]; then
     sudo apt update
-    sudo apt upgrade -y
+    sudo apt dist-upgrade -y
     sudo apt install -y "${basepkg[@]}"
     sudo apt install -y \
+      apt-utils \
       build-essential \
       curl \
       libbz2-dev \
       libffi-dev \
       liblzma-dev \
-      libncurses5-dev \
+      libncursesw5-dev \
       libreadline-dev \
       libsqlite3-dev \
       libssl-dev \
       libxml2-dev \
       libxmlsec1-dev \
       llvm \
+      make \
       tk-dev \
-      xz-utils \
       wget \
-      zlib1g-dev
+      xz-utils \
+      zlib1g-dev \
+      shellcheck
   else
     sudo dnf upgrade -y
     sudo dnf install -y "${basepkg[@]}"
     sudo dnf install -y \
       bzip2 \
       bzip2-devel \
-      findutils \
+      gcc \
       libffi-devel \
+      make \
       openssl-devel \
       readline-devel \
       sqlite \
       sqlite-devel \
-      xz \
+      tk-devel \
       xz-devel \
-      zlib-devel
+      zlib-devel \
+      util-linux-user \
+      ShellCheck
   fi
 
   sudo update-alternatives --set pinentry "$(which pinentry-tty)"
 
-  curl -fsSL https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
-
+  # Python via pyenv
+  curl -SL https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
   export PYENV_ROOT="$HOME/.pyenv"
   export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init --path)"
@@ -63,9 +69,17 @@ if ! [[ -x "$(command -v zsh)" ]]; then
   pyenv global 3.9.5
   pip install --upgrade pip setuptools wheel
 
-  chsh -s "$(command -v zsh)"
-  curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | bash
+  # Node and npm via n
+  curl -SL https://git.io/n-install | bash -s -- -y
+  export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 
+  n rm "$(n --lts)"
+  n latest
+
+  chsh -s "$(command -v zsh)"
+  curl -SL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | bash
+
+  # Finalizing configs
   pip install xxh-xxh
   xxh +I xxh-plugin-zsh-ohmyzsh
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/themes/powerlevel10k
@@ -77,11 +91,14 @@ else
 fi
 
 for hfile in "$BASEDIR"/{runcom,system}/.[a-z]*; do ln -sfv "$hfile" ~; done
-if ! [[ -s ~/.gitconfig ]]; then
-  tail +6 "$BASEDIR"/git/.gitconfig >~/.gitconfig
-fi
+
+ln -sfv "$BASEDIR"/git/.gitconfig ~
 if ! [[ -s ~/.gitignore_global ]]; then
   rsync -ah --info=progress2 "$BASEDIR"/git/.gitignore_global ~
+fi
+if ! [[ -s ~/.gitconfig_local ]]; then
+  rsync -ah --info=progress2 "$BASEDIR"/git/.gitconfig_local ~
+  echo '' >~/.gitconfig_local
 fi
 
 mkdir -p ~/.bin/

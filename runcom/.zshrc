@@ -121,7 +121,6 @@ plugins=(
   extract
   git
   git-lfs
-  gpg-agent
   jsontools
   pyenv
   python
@@ -144,5 +143,3 @@ fi
 for DOTFILE in ~/.{zsh_functions,path,env,zsh_aliases,prompt,custom}; do
   [ -f "$DOTFILE" ] && source "$DOTFILE"
 done
-
-export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).

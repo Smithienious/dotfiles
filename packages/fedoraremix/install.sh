@@ -16,7 +16,5 @@ sudo dnf install -y \
 . ./cpp.sh
 # shellcheck source=dotnet.sh
 . ./dotnet.sh
-# shellcheck source=nodejs.sh
-. ./nodejs.sh
 
 sudo dnf autoremove -y

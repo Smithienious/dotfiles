@@ -1,8 +1,3 @@
-[user]
-signingkey = 234A3C6CCF8846FC15991C1AB5A08FDB1282D170
-name = Hoang NGUYEN
-email = baauco@gmail.com
-
 [alias]
 undopush = push -f origin HEAD^:master
 
@@ -33,12 +28,11 @@ added = yellow
 changed = green
 untracked = cyan
 
-[commit]
-gpsign = true
-gpgsign = true
-
 [core]
 excludesfile = ~/.gitignore_global
+
+[include]
+path = ~/.gitconfig_local
 
 [init]
 defaultBranch = main
