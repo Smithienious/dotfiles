@@ -7,9 +7,8 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 
-# User configuration
-GPG_TTY=$(tty)
-export GPG_TTY
+export GPG_TTY=$(tty)
+
 echo "Did you know that:"
 whatis "$(find /bin/ -maxdepth 1 -name '*' | shuf -n 1)"
 # eval "$(keychain --eval --agents ssh,gpg <ssh> <gpg>)"
@@ -148,4 +147,5 @@ for DOTFILE in ~/.{zsh_functions,path,env,zsh_aliases,prompt,custom}; do
   [ -f "$DOTFILE" ] && source "$DOTFILE"
 done
 
+# User configuration
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"

@@ -7,6 +7,12 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 
+export GPG_TTY=$(tty)
+
+echo "Did you know that:"
+whatis "$(find /bin/ -maxdepth 1 -name '*' | shuf -n 1)"
+# eval "$(keychain --eval --agents ssh,gpg <ssh> <gpg>)"
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -118,10 +124,3 @@ for DOTFILE in ~/.{bash_functions,path,env,bash_aliases,prompt,custom}; do
 done
 
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
-
-# User configuration
-GPG_TTY=$(tty)
-export GPG_TTY
-echo "Did you know that:"
-whatis "$(find /bin/ -maxdepth 1 -name '*' | shuf -n 1)"
-# eval "$(keychain --eval --agents ssh,gpg <ssh> <gpg>)"

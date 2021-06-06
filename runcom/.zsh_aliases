@@ -14,7 +14,7 @@ alias ~='cd ~'
 alias -- -='cd -'
 
 # Directory listing
-alias ls='ls --color=tty --group-directories-first'
+alias ls='ls -v --color=tty --group-directories-first'
 alias ld="ls -lhd */"
 alias lld="ld .*/"
 
