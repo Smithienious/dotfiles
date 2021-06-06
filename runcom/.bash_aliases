@@ -343,7 +343,7 @@ function gplfs() {
 }
 
 # Python
-alias va='if [[ ! -d "venv" && ! -L "venv" ]]; then; python3 -m venv ./venv; source ./venv/bin/activate; touch -a requirements.txt; pip install --upgrade pip setuptools wheel; pip install pip-tools; else; source ./venv/bin/activate; fi;'
+alias va='if [[ ! -d "venv" && ! -L "venv" ]]; then; python -m venv --upgrade-deps ./venv; source ./venv/bin/activate; touch -a requirements.txt; pip install pip-tools; else; source ./venv/bin/activate; fi;'
 alias vx='deactivate'
 # Find python file
 alias pyfind='find . -name "*.py"'
