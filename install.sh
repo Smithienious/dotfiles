@@ -103,3 +103,4 @@ fi
 
 mkdir -p ~/.bin/
 ln -sfvd "$BASEDIR"/bin/ ~/.bin/
+exec "$SHELL"

@@ -10,6 +10,27 @@ As a precaution, should you want to use my config, create a fork of this reposit
 
 This script will install `python 3.9.5` via `pyenv`, `node` and `npm` via `n`, and my flavor of `Oh My Zsh` along with their dependencies.
 
+## How to install this script
+
+- Clone this repository, preferably to your home directory
+
+```bash
+cd ~ &&\
+git clone https://github.com/Smithienious/dotfiles.git
+```
+
+- Move into the directory
+
+```bash
+cd dotfiles
+```
+
+- Run the script
+
+```bash
+. ./install.sh
+```
+
 ## Credits
 
 Some of these scripts are taken from [pengwin-setup](https://github.com/WhitewaterFoundry/pengwin-setup).
