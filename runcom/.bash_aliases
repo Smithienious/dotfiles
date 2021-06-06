@@ -14,6 +14,7 @@ alias ~='cd ~'
 alias -- -='cd -'
 
 # Directory listing
+alias ls='ls --color=tty --group-directories-first'
 alias l='ls -lFh'   # size, show type, human readable
 alias la='ls -lAFh' # long list, show almost all, show type,human readable
 alias lr='ls -tRFh' # sorted by date, recursive, show type, human readable
@@ -23,6 +24,8 @@ alias ldot='ls -ld .*'
 alias lS='ls -1FSsh'
 alias lart='ls -1Fcart'
 alias lrt='ls -1Fcrt'
+alias ld="ls -lhd */"
+alias lld="ld .*/"
 
 # File handling
 alias rm='rm -i'

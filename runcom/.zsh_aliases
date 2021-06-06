@@ -13,6 +13,11 @@ alias ......='cd ../../../../..'
 alias ~='cd ~'
 alias -- -='cd -'
 
+# Directory listing
+alias ls='ls --color=tty --group-directories-first'
+alias ld="ls -lhd */"
+alias lld="ld .*/"
+
 # Django
 alias djrun='find . -maxdepth 2 -name 'manage.py' -exec python "{}" runserver \;'
 alias djsu='find . -maxdepth 2 -name 'manage.py' -exec python "{}" createsuperuser --email="owner@localhost.com" \;'

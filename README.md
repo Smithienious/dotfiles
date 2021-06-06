@@ -1,8 +1,14 @@
 # Dotfiles for WSL
 
+## Disclaimer
+
+This config is fine-tuned for my personal use, but all the paths I use are relative enough for use on any system.
+
+As a precaution, should you want to use my config, create a fork of this repository, review and make any changes that you like, then clone your fork.
+
 ## What this script does
 
-This script will install my flavor of `Oh My Zsh` along with the dependencies.
+This script will install `python 3.9.5` via `pyenv`, `node` and `npm` via `n`, and my flavor of `Oh My Zsh` along with their dependencies.
 
 ## Credits
 
