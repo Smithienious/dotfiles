@@ -117,6 +117,8 @@ for DOTFILE in ~/.{bash_functions,path,env,bash_aliases,prompt,custom}; do
   [ -f "$DOTFILE" ] && source "$DOTFILE"
 done
 
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
+
 # User configuration
 GPG_TTY=$(tty)
 export GPG_TTY

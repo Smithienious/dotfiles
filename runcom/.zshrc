@@ -143,3 +143,5 @@ fi
 for DOTFILE in ~/.{zsh_functions,path,env,zsh_aliases,prompt,custom}; do
   [ -f "$DOTFILE" ] && source "$DOTFILE"
 done
+
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
