@@ -82,7 +82,11 @@ fi
 unset JSONTOOLS_METHOD
 
 # VSCode
-VSCODE=code-insiders
+if [[ -x "$(command -v code-insiders)" ]]; then
+  VSCODE=code-insiders
+else
+  VSCODE=code
+fi
 if [[ -n "$VSCODE" ]] && ! which $VSCODE &>/dev/null; then
   echo "'$VSCODE' flavour of VS Code not detected."
   unset VSCODE

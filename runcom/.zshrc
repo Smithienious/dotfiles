@@ -100,7 +100,11 @@ zstyle ':completion:*:*:docker-*:*' option-stacking yes
 # The following line will make the plugin to open VS Code Insiders
 # Invalid entries will be ignored, no aliases will be added
 # shellcheck disable=SC2034
-VSCODE=code-insiders
+if [[ -x "$(command -v code-insiders)" ]]; then
+  VSCODE=code-insiders
+else
+  VSCODE=code
+fi
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
