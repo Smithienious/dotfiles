@@ -9,7 +9,7 @@ fi
 
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-if ! [[ -x "$(command -v zsh)" ]]; then
+if [[ -z "$(command -v zsh)" || "$1" == "-f" || "$1" == "--force" ]]; then
   basepkg=(git git-lfs htop keychain most nano pinentry-tty rsync tree zsh)
 
   if [[ -x "$(command -v apt)" ]]; then
