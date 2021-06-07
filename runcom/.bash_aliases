@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-# Shortcuts
-alias reload='command clear; exec $SHELL'
-alias rr='rm -rf'
+source ~/.zsh_aliases
 
 # Navigation
 alias ..='cd ..'
@@ -51,14 +49,6 @@ alias ds='dotnet sln'
 alias da='dotnet add'
 alias dp='dotnet pack'
 alias dng='dotnet nuget'
-
-# Django
-alias djrun='find . -maxdepth 2 -name 'manage.py' -exec python "{}" runserver \;'
-alias djsu='find . -maxdepth 2 -name 'manage.py' -exec python "{}" createsuperuser --email="owner@localhost.com" \;'
-alias djmm='find . -maxdepth 2 -name 'manage.py' -exec python "{}" makemigrations \;'
-alias djmig='find . -maxdepth 2 -name 'manage.py' -exec python "{}" migrate \;'
-alias djsh='find . -maxdepth 2 -name 'manage.py' -exec python "{}" shell \;'
-alias djshp='find . -maxdepth 2 -name 'manage.py' -exec python "{}" shell_plus \;'
 
 # Git
 
@@ -342,9 +332,6 @@ function gplfs() {
   git lfs push origin "$b" --all
 }
 
-# Python
-alias va='if [[ ! -d "venv" && ! -L "venv" ]]; then; python -m venv --upgrade-deps ./venv; source ./venv/bin/activate; touch -a requirements.txt; pip install pip-tools; else; source ./venv/bin/activate; fi;'
-alias vx='deactivate'
 # Find python file
 alias pyfind='find . -name "*.py"'
 
@@ -393,17 +380,7 @@ alias pygrep='grep -nr --include="*.py"'
 # Run proper IPython regarding current virtualenv (if any)
 alias ipython="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 
-# List declared aliases, functions, paths
-alias aliases="alias | sed 's/=.*//'"
-alias functions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
-alias paths='echo -e ${PATH//:/\\n}'
-
-# Enable aliases to be sudo’ed
-alias sudo='sudo '
-
 # Other
-alias now='date +"%T"'
-alias week='date +%V'
 alias h='history'
 alias hgrep="fc -El 0 | grep"
 alias help='man'

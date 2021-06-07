@@ -10,12 +10,12 @@ alias ld="ls -lhd */"
 alias lld="ld .*/"
 
 # Django
-alias djrun='find . -maxdepth 2 -name 'manage.py' -exec python "{}" runserver \;'
-alias djsu='find . -maxdepth 2 -name 'manage.py' -exec python "{}" createsuperuser --email="owner@localhost.com" \;'
-alias djmm='find . -maxdepth 2 -name 'manage.py' -exec python "{}" makemigrations \;'
-alias djmig='find . -maxdepth 2 -name 'manage.py' -exec python "{}" migrate \;'
-alias djsh='find . -maxdepth 2 -name 'manage.py' -exec python "{}" shell \;'
-alias djshp='find . -maxdepth 2 -name 'manage.py' -exec python "{}" shell_plus \;'
+alias djrun='python manage.py runserver'
+alias djsu='python manage.py createsuperuser --email="owner@localhost.com"'
+alias djmm='python manage.py makemigrations'
+alias djmig='python manage.py migrate'
+alias djsh='python manage.py shell'
+alias djshp='python manage.py shell_plus'
 
 # Python venv
 alias va='if [[ ! -d "venv" && ! -L "venv" ]]; then; python -m venv --upgrade-deps ./venv; source ./venv/bin/activate; touch -a requirements.txt; pip install pip-tools; else; source ./venv/bin/activate; fi;'

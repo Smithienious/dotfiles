@@ -10,7 +10,7 @@ fi
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 if [[ -z "$(command -v zsh)" || "$1" == "-f" || "$1" == "--force" ]]; then
-  basepkg=(git git-lfs htop keychain less most nano pinentry-tty rsync tree zsh)
+  basepkg=(git git-lfs htop keychain less make most nano pinentry-tty rsync tree zsh)
 
   if [[ -x "$(command -v apt)" ]]; then
     sudo apt update
@@ -45,7 +45,6 @@ if [[ -z "$(command -v zsh)" || "$1" == "-f" || "$1" == "--force" ]]; then
       bzip2-devel \
       gcc \
       libffi-devel \
-      make \
       openssl-devel \
       readline-devel \
       sqlite \
@@ -58,7 +57,7 @@ if [[ -z "$(command -v zsh)" || "$1" == "-f" || "$1" == "--force" ]]; then
     sudo dnf autoremove -y
   fi
 
-  sudo update-alternatives --set pinentry "$(which pinentry-tty)"
+  sudo update-alternatives --set pinentry "$(command -v pinentry-tty)"
 
   # Python via pyenv
   curl -SL https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
@@ -70,6 +69,7 @@ if [[ -z "$(command -v zsh)" || "$1" == "-f" || "$1" == "--force" ]]; then
   pyenv install -s 3.9.5
   pyenv global 3.9.5
   pip install --upgrade pip setuptools wheel
+  pip install pygments
 
   # Node and npm via n
   curl -SL https://git.io/n-install | bash -s -- -y
@@ -107,3 +107,4 @@ fi
 mkdir -p ~/.bin/
 ln -sfvd "$BASEDIR"/bin/ ~/.bin/
 exec "$SHELL"
+exit 0

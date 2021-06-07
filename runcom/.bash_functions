@@ -1,57 +1,23 @@
 #!/usr/bin/env bash
 
+source ~/.zsh_functions
+
 # Copy but fancier
 function cpv() {
   rsync -pogbr -hhh --backup-dir=/tmp/rsync -e /dev/null --progress "$@"
 }
 
-# `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
-# the `.git` directory, listing directories first. The output gets piped into
-# `less` with options to preserve color and line numbers, unless the output is
-# small enough for one screen.
-function tre() {
-  tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX
-}
-
-# Create a new directory and enter it
-function mkd() {
-  # shellcheck disable=SC2164
-  mkdir -p "$@" && cd "$@"
-}
-
-# cd then ls
-function cl() {
-  DIR="$*"
-  # if no DIR given, go home
-  if [ $# -lt 1 ]; then
-    DIR=$HOME
-  fi
-  builtin cd "${DIR}" &&
-    # use your preferred ls command
-    ls -lFh
-}
-
-# Determine size of a file or total size of a directory
-function fs() {
-  local arg=-sbh
-  if [[ -n "$*" ]]; then
-    du $arg -- "$@"
-  else
-    du $arg .[^.]* -- *
-  fi
-}
-
 # JSON tools
-if [[ $(which "$JSONTOOLS_METHOD") = "" ]]; then
+if [[ $(command -v "$JSONTOOLS_METHOD") = "" ]]; then
   JSONTOOLS_METHOD=""
 fi
 
-if [[ $(which node) != "" && ("x$JSONTOOLS_METHOD" = "x" || "x$JSONTOOLS_METHOD" = "xnode") ]]; then
+if [[ $(command -v node) != "" && ("x$JSONTOOLS_METHOD" = "x" || "x$JSONTOOLS_METHOD" = "xnode") ]]; then
   alias pp_json='xargs -0 node -e "console.log(JSON.stringify(JSON.parse(process.argv[1]), null, 4));"'
   alias is_json='xargs -0 node -e "try {json = JSON.parse(process.argv[1]);} catch (e) { console.log(false); json = null; } if(json) { console.log(true); }"'
   alias urlencode_json='xargs -0 node -e "console.log(encodeURIComponent(process.argv[1]))"'
   alias urldecode_json='xargs -0 node -e "console.log(decodeURIComponent(process.argv[1]))"'
-elif [[ $(which python) != "" && ("x$JSONTOOLS_METHOD" = "x" || "x$JSONTOOLS_METHOD" = "xpython") ]]; then
+elif [[ $(command -v python) != "" && ("x$JSONTOOLS_METHOD" = "x" || "x$JSONTOOLS_METHOD" = "xpython") ]]; then
   alias pp_json='python -c "import sys; del sys.path[0]; import runpy; runpy._run_module_as_main(\"json.tool\")"'
   alias is_json='python -c "
 import sys; del sys.path[0];
@@ -73,7 +39,7 @@ import sys; del sys.path[0];
 import urllib, json;
 print urllib.unquote_plus(sys.stdin.read())
 sys.exit(0)"'
-elif [[ $(which ruby) != "" && ("x$JSONTOOLS_METHOD" = "x" || "x$JSONTOOLS_METHOD" = "xruby") ]]; then
+elif [[ $(command -v ruby) != "" && ("x$JSONTOOLS_METHOD" = "x" || "x$JSONTOOLS_METHOD" = "xruby") ]]; then
   alias pp_json='ruby -e "require \"json\"; require \"yaml\"; puts JSON.parse(STDIN.read).to_yaml"'
   alias is_json='ruby -e "require \"json\"; begin; JSON.parse(STDIN.read); puts true; rescue Exception => e; puts false; end"'
   alias urlencode_json='ruby -e "require \"uri\"; puts URI.escape(STDIN.read)"'
@@ -88,18 +54,18 @@ if [[ -x "$(command -v code-insiders)" ]]; then
 else
   VSCODE=code
 fi
-if [[ -n "$VSCODE" ]] && ! which $VSCODE &>/dev/null; then
+if [[ -n "$VSCODE" ]] && ! command -v $VSCODE &>/dev/null; then
   echo "'$VSCODE' flavour of VS Code not detected."
   unset VSCODE
 fi
 
 # Otherwise, try to detect a flavour of VS Code.
 if [[ -z "$VSCODE" ]]; then
-  if which code &>/dev/null; then
+  if command -v code &>/dev/null; then
     VSCODE=code
-  elif which code-insiders &>/dev/null; then
+  elif command -v code-insiders &>/dev/null; then
     VSCODE=code-insiders
-  elif which codium &>/dev/null; then
+  elif command -v codium &>/dev/null; then
     VSCODE=codium
   else
     return
