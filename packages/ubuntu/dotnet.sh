@@ -1,24 +1,21 @@
 #!/usr/bin/env bash
 
-function main {
+. ../common.sh
 
-  dist="$(uname -m)"
-  if [[ ${dist} != "x86_64" ]]; then
-    echo "Skipping DOTNET not supported in ARM64"
-    exit 0
-  fi
-  unset dist
+function main() {
+  createtmp
 
-  curl -SL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor >microsoft.gpg
-  sudo cp microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-  rm microsoft.gpg
-
-  echo 'deb https://packages.microsoft.com/repos/microsoft-debian-buster-prod buster main' | sudo tee /etc/apt/sources.list.d/microsoft.list
+  wget https://packages.microsoft.com/config/ubuntu/21.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+  sudo dpkg -i packages-microsoft-prod.deb
 
   sudo apt update
   sudo apt install -y \
+    apt-transport-https \
     dotnet-sdk-5.0 \
     nuget
+
+  cleantmp
+  sudo apt autoremove -y
 }
 
 main "$@"

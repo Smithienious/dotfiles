@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-function main {
-
+function main() {
   pengwin-setup install PROGRAMMING DOTNET
 }
 

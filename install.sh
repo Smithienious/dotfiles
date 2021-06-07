@@ -10,11 +10,11 @@ fi
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 if [[ -z "$(command -v zsh)" || "$1" == "-f" || "$1" == "--force" ]]; then
-  basepkg=(git git-lfs htop keychain most nano pinentry-tty rsync tree zsh)
+  basepkg=(git git-lfs htop keychain less most nano pinentry-tty rsync tree zsh)
 
   if [[ -x "$(command -v apt)" ]]; then
     sudo apt update
-    sudo apt dist-upgrade -y
+    sudo apt full-upgrade -y
     sudo apt install -y "${basepkg[@]}"
     sudo apt install -y \
       apt-utils \
@@ -36,6 +36,7 @@ if [[ -z "$(command -v zsh)" || "$1" == "-f" || "$1" == "--force" ]]; then
       xz-utils \
       zlib1g-dev \
       shellcheck
+    sudo apt autoremove -y
   else
     sudo dnf upgrade -y
     sudo dnf install -y "${basepkg[@]}"
@@ -54,6 +55,7 @@ if [[ -z "$(command -v zsh)" || "$1" == "-f" || "$1" == "--force" ]]; then
       zlib-devel \
       util-linux-user \
       ShellCheck
+    sudo dnf autoremove -y
   fi
 
   sudo update-alternatives --set pinentry "$(which pinentry-tty)"
@@ -71,7 +73,8 @@ if [[ -z "$(command -v zsh)" || "$1" == "-f" || "$1" == "--force" ]]; then
 
   # Node and npm via n
   curl -SL https://git.io/n-install | bash -s -- -y
-  export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
+  export N_PREFIX="$HOME/n"
+  [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 
   n rm "$(n --lts)"
   n latest
