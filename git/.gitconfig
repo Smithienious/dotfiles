@@ -1,5 +1,5 @@
 [alias]
-undopush = push -f origin HEAD^:master
+undopush = ! . ~/.functions && git push --force-with-lease origin HEAD^:"$(git_current_branch)"
 
 [branch]
 autosetuprebase = always

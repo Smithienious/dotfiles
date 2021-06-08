@@ -106,5 +106,6 @@ fi
 
 mkdir -p ~/.bin/
 ln -sfvd "$BASEDIR"/bin/ ~/.bin/
+
+command clear
 exec "$SHELL"
-exit 0
