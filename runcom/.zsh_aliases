@@ -11,7 +11,7 @@ alias lld="ld .*/"
 
 # Django
 alias djrun='python manage.py runserver'
-alias djsu='python manage.py createsuperuser --email="owner@localhost.com"'
+alias djsu='python manage.py createsuperuser'
 alias djmm='python manage.py makemigrations'
 alias djmig='python manage.py migrate'
 alias djsh='python manage.py shell'

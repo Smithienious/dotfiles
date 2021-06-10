@@ -22,7 +22,7 @@ git clone https://github.com/Smithienious/dotfiles.git
 - Move into the directory
 
 ```bash
-cd dotfiles
+cd ~/dotfiles
 ```
 
 - Run the script
