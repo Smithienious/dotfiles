@@ -89,6 +89,7 @@ if [[ -z "$(command -v zsh)" || "$1" == "-f" || "$1" == "--force" ]]; then
   git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/plugins/zsh-syntax-highlighting
   git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/plugins/zsh-autosuggestions
 else
+  git pull --rebase
   pyenv update
   omz update
 fi
@@ -104,7 +105,6 @@ if ! [[ -s ~/.gitconfig_local ]]; then
   echo '' >~/.gitconfig_local
 fi
 
-# mkdir -p ~/.bin/
 ln -sfvd "$BASEDIR"/system/.bin/ ~
 ln -sfvd /mnt/wsl/ ~
 
