@@ -104,8 +104,9 @@ if ! [[ -s ~/.gitconfig_local ]]; then
   echo '' >~/.gitconfig_local
 fi
 
-mkdir -p ~/.bin/
-ln -sfvd "$BASEDIR"/bin/ ~/.bin/
+# mkdir -p ~/.bin/
+ln -sfvd "$BASEDIR"/system/.bin/ ~
+ln -sfvd /mnt/wsl/ ~
 
 command clear
 exec "$SHELL"
