@@ -2,9 +2,9 @@
 
 ## Disclaimer
 
-This config is fine-tuned for my personal use, but all the paths I use are relative enough for use on any system.
+This config is fine-tuned for my daily drive.
 
-As a precaution, should you want to use my config, create a fork of this repository, review and make any changes that you like, then clone your fork.
+Instead of cloning this repo directly, you should first fork this repository and make any changes that you like, then clone your version of this config.
 
 ## What this script does
 
@@ -32,15 +32,34 @@ cd ~/dotfiles
 - Run the script
 
 ```bash
-. ./install.sh
+source ./install.sh
 ```
+
+## FAQ
+
+- What is the `wsl` folder in my home directory?
+
+It is a special folder shared between all running WSL2 machines on your PC.
+The `wsl` is actually a symbolic link from `/mnt/wsl/`.
+Microsoft does not have this documented for some reason.
+
+The content of this folder is lost if all machines are off, so use it wisely.
+
+- How do I install a pip package in my virtual environment?
+
+The shortcut `va` calls `venv --system-site-packages`, thus preventing local installations of packages already available on the system site.
+You can use `--ignore-installed` flag to override this.
+
+```bash
+pip install --ignore-installed
+```
+
+## Feedback
+
+Suggestions/improvements are [welcome and encouraged](https://github.com/Smithienious/dotfiles/issues)!
 
 ## Credits
 
 Some of these scripts are taken from [pengwin-setup](https://github.com/WhitewaterFoundry/pengwin-setup).
 
 Aliases and functions are shamelessly stolen from [Oh My Zsh Plugins](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins).
-
-## Feedback
-
-Suggestions/improvements are [welcome and encouraged](https://github.com/Smithienious/dotfiles/issues)!

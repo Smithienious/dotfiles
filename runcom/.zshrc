@@ -8,9 +8,6 @@ eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 
 export GPG_TTY=$(tty)
-
-echo "Did you know that:"
-whatis "$(find /bin/ -maxdepth 1 -name '*' | shuf -n 1)"
 # eval "$(keychain --eval --agents ssh,gpg <ssh> <gpg>)"
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
