@@ -22,8 +22,22 @@ alias dos2unixn='find . -type f -print0 | xargs -0 dos2unix'
 alias unix2dosn='find . -type f -print0 | xargs -0 unix2dos'
 
 # Python venv
-alias va='if [[ ! -d "venv" && ! -L "venv" ]]; then; python -m venv --system-site-packages --upgrade-deps ./venv; source ./venv/bin/activate; touch -a requirements.txt; pip install pip-tools; else; source ./venv/bin/activate; fi;'
 alias vx='deactivate'
+function va() {
+  lastEnv="${${@: -1:1}:-.venv}"
+
+  if [[ ! -d "$lastEnv" && ! -L "$lastEnv" ]]; then
+    python -m venv --system-site-packages --upgrade-deps "${@:-${lastEnv}}"
+    touch .env requirements.txt
+
+    source "$lastEnv"/bin/activate
+    pip install pip-tools
+  else
+    source "$lastEnv"/bin/activate
+  fi
+
+  echo "Activated $lastEnv"
+}
 
 # List declared aliases, functions, paths
 alias aliases="alias | sed 's/=.*//'"

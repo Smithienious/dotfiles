@@ -11,7 +11,9 @@ function tre() {
 # Create a new directory and enter it
 function mkd() {
   # shellcheck disable=SC2164
-  mkdir -p "$@" && cd "$@"
+  mkdir -p "$@" && cd "${@: -1:1}"
+  # Next to last ${@: -2:1}
+  # The space is important
 }
 
 # cd then ls

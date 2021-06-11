@@ -109,4 +109,3 @@ ln -sfvd "$BASEDIR"/system/.bin/ ~
 ln -sfvd /mnt/wsl/ ~
 
 command clear
-exec "$SHELL"
