@@ -69,7 +69,7 @@ if [[ -z "$(command -v zsh)" || "$1" == "-f" || "$1" == "--force" ]]; then
   pyenv install -s 3.9.5
   pyenv global 3.9.5
   pip install --upgrade pip setuptools wheel
-  pip install pygments
+  pip install pipupgrade pygments
 
   # Node and npm via n
   curl -SL https://git.io/n-install | bash -s -- -y
@@ -89,7 +89,7 @@ if [[ -z "$(command -v zsh)" || "$1" == "-f" || "$1" == "--force" ]]; then
   git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/plugins/zsh-syntax-highlighting
   git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/plugins/zsh-autosuggestions
 else
-  git pull --rebase
+  git pull --rebase --autostash
   pyenv update
   omz update
 fi
