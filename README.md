@@ -4,7 +4,7 @@
 
 This config is fine-tuned for my daily drive.
 
-Instead of cloning this repo directly, you should first fork this repository and make any changes that you like, then clone your version of this config.
+To use my config, you should first create a new repository using this repository as a template, make any changes that you like, then clone your version of this config.
 
 ## What this script does
 

@@ -10,7 +10,7 @@ fi
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 if [[ -z "$(command -v zsh)" || "$1" == "-f" || "$1" == "--force" ]]; then
-  basepkg=(git git-lfs htop keychain less make most nano pinentry-tty rsync tree zsh)
+  basepkg=(dos2unix git git-lfs htop keychain less make most nano pinentry-tty rsync tree zsh)
 
   if [[ -x "$(command -v apt)" ]]; then
     sudo apt update
@@ -94,19 +94,9 @@ else
   omz update
 fi
 
-for hfile in "$BASEDIR"/{runcom,system}/.[a-z]*; do ln -sfv "$hfile" ~; done
-
-ln -sfv "$BASEDIR"/git/.gitconfig ~
-if ! [[ -s ~/.gitignore_global ]]; then
-  rsync -ah --info=progress2 "$BASEDIR"/git/.gitignore_global ~
-fi
-if ! [[ -s ~/.gitconfig_local ]]; then
-  rsync -ah --info=progress2 "$BASEDIR"/git/.gitconfig_local ~
-  echo '' >~/.gitconfig_local
-fi
+for file in "$BASEDIR"/{git,runcom,system}/.[a-z]*; do ln -sfv "$file" ~; done
 
 ln -sfvd "$BASEDIR"/system/.bin/ ~
 ln -sfvd /mnt/wsl/ ~
 
 command clear
-exec "$SHELL"

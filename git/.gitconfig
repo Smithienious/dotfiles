@@ -1,14 +1,16 @@
 [alias]
 undopush = ! . ~/.functions && git push --force-with-lease origin HEAD^:"$(git_current_branch)"
+lol = log --graph --decorate --pretty=oneline --abbrev-commit
+lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 
 [branch]
 autosetuprebase = always
 
 [color]
-diff = auto
-status = auto
 branch = auto
+diff = auto
 interactive = auto
+status = auto
 ui = true
 pager = true
 
