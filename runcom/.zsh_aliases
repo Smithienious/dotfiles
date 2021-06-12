@@ -28,7 +28,7 @@ alias unix2dosn='find . -type f -print0 | xargs -0 unix2dos'
 # Python venv
 alias vx='deactivate'
 function va() {
-  lastEnv="${${@: -1:1}:-.venv}"
+  [[ -n "$*" ]] && lastEnv="${*: -1:1}" || lastEnv=".venv"
 
   if [[ ! -d "$lastEnv" && ! -L "$lastEnv" ]]; then
     python -m venv --system-site-packages --upgrade-deps "${@:-${lastEnv}}"

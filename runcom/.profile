@@ -11,14 +11,4 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.bin" ]; then
-  PATH="$HOME/.bin:$PATH"
-fi
-
-# User configuration
-GPG_TTY=$(tty)
-export GPG_TTY
-echo "Did you know that:"
-whatis "$(find /bin/ -maxdepth 1 -name '*' | shuf -n 1)"
-# eval "$(keychain --eval --agents ssh,gpg <ssh> <gpg>)"
+source ~/.bashrc
