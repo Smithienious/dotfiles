@@ -1,7 +1,9 @@
 [alias]
-undopush = ! . ~/.functions && git push --force-with-lease origin HEAD^:"$(git_current_branch)"
 lol = log --graph --decorate --pretty=oneline --abbrev-commit
 lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+undopush = ! . ~/.functions && git push --force-with-lease origin HEAD^:"$(git_current_branch)"
+wdiff = diff -w --word-diff=color
+whatadded = log --diff-filter=A
 
 [branch]
 autosetuprebase = always
