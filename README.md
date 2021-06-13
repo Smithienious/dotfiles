@@ -2,9 +2,8 @@
 
 ## Disclaimer
 
-This config is fine-tuned for my daily drive.
-
-To use my config, you should first create a new repository using this repository as a template, make any changes that you like, then clone your version of this config.
+If you want to give these dotfiles a try, you should first fork this repository, review the code, and remove things you don’t want or need. Don’t blindly use my settings unless you know what that entails.
+Use at your own risk!
 
 ## What this script does
 
@@ -23,16 +22,11 @@ cd ~ &&\
 git clone https://github.com/Smithienious/dotfiles.git
 ```
 
-- Move into the directory
+- Move into the directory and run the script
 
 ```bash
 cd ~/dotfiles
-```
-
-- Run the script
-
-```bash
-source ./install.sh
+source ./install.sh install
 ```
 
 ## FAQ
