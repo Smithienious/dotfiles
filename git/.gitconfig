@@ -1,5 +1,5 @@
 [alias]
-undopush = ! . ~/.functions && git push --force-with-lease origin HEAD^:"$(git_current_branch)"
+undopush = ! . ~/.profile && git push --force-with-lease origin HEAD^:"$(git_current_branch)"
 lol = log --graph --decorate --pretty=oneline --abbrev-commit
 lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 

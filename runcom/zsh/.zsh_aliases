@@ -1,4 +1,5 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
+# echo "$(basename $0)"
 
 # Shortcuts
 alias reload='command clear; exec $SHELL'

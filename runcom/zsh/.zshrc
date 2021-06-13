@@ -1,15 +1,6 @@
-# If not running interactively, don't do anything
-[ -z "$PS1" ] && return
+# Interactive
 
-# User configuration
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-if [[ -z "$VIRTUAL_ENV" ]]; then
-  eval "$(pyenv init -)"
-fi
-
-export GPG_TTY=$(tty)
+# Keychain
 # eval "$(keychain --eval --agents ssh,gpg <ssh> <gpg>)"
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -136,15 +127,23 @@ source "$ZSH"/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.bin" ] ; then
+# GnuPG pinentry
+export GPG_TTY=$(tty)
+
+# Pyenv
+if [[ -z "$VIRTUAL_ENV" ]]; then
+  eval "$(pyenv init -)"
+fi
+
+# Set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.bin" ]; then
   PATH="$HOME/.bin:$PATH"
 fi
+
+# N
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 
 # Source the dotfiles (order matters)
 for DOTFILE in ~/.{zsh_functions,path,env,zsh_aliases,prompt,custom}; do
   [ -f "$DOTFILE" ] && source "$DOTFILE"
 done
-
-# User configuration
-export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
