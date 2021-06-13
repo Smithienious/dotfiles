@@ -110,13 +110,13 @@ if [[ -z "$VIRTUAL_ENV" ]]; then
   eval "$(pyenv init -)"
 fi
 
+# N
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
+
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.bin" ]; then
   PATH="$HOME/.bin:$PATH"
 fi
-
-# N
-export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 
 # Source the dotfiles (order matters)
 for DOTFILE in ~/.{bash_functions,path,env,bash_aliases,prompt,custom}; do

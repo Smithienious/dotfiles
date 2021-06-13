@@ -18,9 +18,10 @@ alias djmig='python manage.py migrate'
 alias djsh='python manage.py shell'
 alias djshp='python manage.py shell_plus'
 
-# Git committer date for tagigng
+# Git
 alias gsc='GIT_COMMITTER_DATE="$(git show --format=%aD | head -1)"'
 alias guc='unset GIT_COMMITTER_DATE'
+alias gbd='git branch | tac | command grep -E "^(\+|\*)?\s*(development|develop|devel|dev)\s*$" | head -1 | command xargs -n 1 git checkout'
 
 # Recursive EOL replacement
 alias dos2unixn='find . -type f -print0 | xargs -0 dos2unix'
