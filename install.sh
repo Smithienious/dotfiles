@@ -88,6 +88,7 @@ function link_dotfiles {
   for DOTFILE in "$BASEDIR"/{git,system}/.[a-z]*; do ln -sfv "$DOTFILE" ~; done
   for DOTFILE in "$BASEDIR"/runcom/{ba,z}sh/.[a-z]*; do ln -sfv "$DOTFILE" ~; done
 
+  rm -rf ~/.bin ~/wsl
   ln -sfvd "$BASEDIR"/system/.bin/ ~
   ln -sfvd /mnt/wsl/ ~
 }
@@ -124,5 +125,3 @@ while [[ $# -gt 0 ]]; do
     ;;
   esac
 done
-
-command clear
