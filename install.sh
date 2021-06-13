@@ -21,7 +21,8 @@ function update_upgrade {
 }
 
 function base_packages {
-  basepkgs=(curl dos2unix git git-lfs htop keychain less make most nano openssl pinentry-tty rsync tree)
+  basepkgs=(curl dos2unix git git-lfs htop keychain less make most nano
+    openssl pinentry-tty rsync tree)
 
   if [[ -x "$(command -v apt)" ]]; then
     sudo apt install -y "${basepkgs[@]}" shellcheck
@@ -112,7 +113,6 @@ while [[ $# -gt 0 ]]; do
     shift
     ;;
   dotfile | dotfiles)
-    git pull --rebase --autostash
     link_dotfiles
     shift
     ;;
