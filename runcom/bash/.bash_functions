@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# echo "$(basename $BASH_SOURCE)"
 
 source ~/.zsh_functions
 

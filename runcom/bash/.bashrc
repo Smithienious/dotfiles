@@ -1,16 +1,5 @@
-# If not running interactively, don't do anything
-[ -z "$PS1" ] && return
-
-# User configuration
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-if [[ -z "$VIRTUAL_ENV" ]]; then
-  eval "$(pyenv init -)"
-fi
-
-export GPG_TTY=$(tty)
-# eval "$(keychain --eval --agents ssh,gpg <ssh> <gpg>)"
+# Interactive, non-login
+# echo "$(basename $BASH_SOURCE)"
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
@@ -106,11 +95,23 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
+    source /usr/share/bash-completion/bash_completion
   elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
+    source /etc/bash_completion
   fi
 fi
+
+# GnuPG pinentry
+export GPG_TTY=$(tty)
+# eval "$(keychain --eval --agents ssh,gpg <ssh> <gpg>)"
+
+# Pyenv
+if [[ -z "$VIRTUAL_ENV" ]]; then
+  eval "$(pyenv init -)"
+fi
+
+# N
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.bin" ]; then
@@ -121,5 +122,3 @@ fi
 for DOTFILE in ~/.{bash_functions,path,env,bash_aliases,prompt,custom}; do
   [ -f "$DOTFILE" ] && source "$DOTFILE"
 done
-
-export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"

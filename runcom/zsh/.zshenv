@@ -1,3 +1,5 @@
+# Always executes first
+
 # Editor
 export EDITOR="nano"
 
