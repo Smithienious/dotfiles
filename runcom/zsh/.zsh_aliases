@@ -18,6 +18,9 @@ alias djmig='python manage.py migrate'
 alias djsh='python manage.py shell'
 alias djshp='python manage.py shell_plus'
 
+# File handling
+alias rm='rm -I'
+
 # Git
 alias gsc='GIT_COMMITTER_DATE="$(git show --format=%aD | head -1)"'
 alias guc='unset GIT_COMMITTER_DATE'

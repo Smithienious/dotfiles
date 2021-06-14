@@ -27,7 +27,7 @@ alias ld="ls -lhd */"
 alias lld="ld .*/"
 
 # File handling
-alias rm='rm -i'
+alias rm='rm -I'
 alias cp='cp -i'
 alias mv='mv -i'
 alias dud='du -d 1 -h'
