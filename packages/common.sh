@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function createtmp() {
+function createtmp {
   echo "Saving current directory as \$CURDIR"
   CURDIR=$(pwd)
   TMPDIR=$(mktemp -d)
@@ -9,10 +9,10 @@ function createtmp() {
   cd "$TMPDIR"
 }
 
-function cleantmp() {
+function cleantmp {
   echo "Returning to $CURDIR"
   # shellcheck disable=SC2164
   cd "$CURDIR"
   echo "Cleaning up $TMPDIR"
-  sudo command rm -r $TMPDIR # need to add sudo here because git clones leave behind write-protected files
+  command sudo rm -r $TMPDIR # need to add sudo here because git clones leave behind write-protected files
 }
