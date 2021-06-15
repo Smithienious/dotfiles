@@ -106,7 +106,6 @@ while [[ $# -gt 0 ]]; do
     shift
     ;;
   update | upgrade)
-    git pull --rebase --autostash
     update_upgrade
     pyenv update
     omz update
