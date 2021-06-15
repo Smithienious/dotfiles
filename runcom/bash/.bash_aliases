@@ -121,14 +121,17 @@ alias gcl='git clone --recurse-submodules'
 alias gclean='git clean -id'
 alias gpristine='git reset --hard && git clean -dffx'
 alias gcm='git checkout $(git_main_branch)'
-alias gcd='git checkout develop'
+alias gcd='git branch | tac | command grep -E "^(\+|\*)?\s*(development|develop|devel|dev)\s*$" | head -1 | command xargs -n 1 git checkout'
 alias gcmsg='git commit -m'
 alias gco='git checkout'
+alias gcor='git checkout --recurse-submodules'
 alias gcount='git shortlog -sn'
 alias gcp='git cherry-pick'
 alias gcpa='git cherry-pick --abort'
 alias gcpc='git cherry-pick --continue'
 alias gcs='git commit -S'
+alias gcss='git commit -S -s'
+alias gcssm='git commit -S -s -m'
 
 alias gd='git diff'
 alias gdca='git diff --cached'
@@ -241,7 +244,7 @@ alias gra='git remote add'
 alias grb='git rebase'
 alias grba='git rebase --abort'
 alias grbc='git rebase --continue'
-alias grbd='git rebase develop'
+alias grbd='git branch | tac | command grep -E "^(\+|\*)?\s*(development|develop|devel|dev)\s*$" | head -1 | command xargs -n 1 git rebase'
 alias grbi='git rebase -i'
 alias grbm='git rebase $(git_main_branch)'
 alias grbo='git rebase --onto'
@@ -332,6 +335,9 @@ function gplfs() {
   local b="$(git_current_branch)"
   git lfs push origin "$b" --all
 }
+
+# Python command
+alias py='python'
 
 # Find python file
 alias pyfind='find . -name "*.py"'
