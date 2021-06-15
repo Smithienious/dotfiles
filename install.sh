@@ -96,7 +96,7 @@ function link_dotfiles {
 # https://www.gnu.org/software/bash/manual/html_node/Conditional-Constructs.html
 while [[ $# -gt 0 ]]; do
   case "$1" in
-  install | autoinstall)
+  install | setup)
     update_upgrade
     base_packages
     python_pyenv
@@ -106,7 +106,6 @@ while [[ $# -gt 0 ]]; do
     shift
     ;;
   update | upgrade)
-    git pull --rebase --autostash
     update_upgrade
     pyenv update
     omz update
@@ -115,6 +114,7 @@ while [[ $# -gt 0 ]]; do
     ;;
   git | pull)
     git pull --rebase --autostash
+    shift
     ;;
   dotfile | dotfiles)
     link_dotfiles
