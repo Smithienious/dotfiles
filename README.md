@@ -2,20 +2,26 @@
 
 ## Disclaimer
 
-If you want to give these dotfiles a try, you should first fork this repository, review the code, and remove things you don’t want or need. Don’t blindly use my settings unless you know what that entails.
+You should not clone this repo and use directly, instead create a fork or use this repo as a template to create a new one. ([Comparison](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/creating-a-repository-from-a-template#about-repository-templates))
+
+Don't blindly use my config unless you know what that entails.
+Review the code, remove things you don’t want or need, and enjoy.
+
 Use at your own risk!
 
 ## What this script does
 
-- This script will install `python 3.9.5` via `pyenv`, `node` and `npm` via `n`, and my flavor of `Oh My Zsh` along with their dependencies.
+- This script will install `python` via `pyenv`, `node` and `npm` via `n`, and my flavor of `Oh My Zsh` along with their dependencies.
 
-- This script comes bundled with plugins, allowing you to take advantage of functionality of many sorts to your shell. They are each documented in the README file in their respective `plugins/` folder on the [Oh My Zsh wiki](https://github.com/ohmyzsh/ohmyzsh/wiki).
+- This script comes bundled with plugins, allowing you to take advantage of functionality of many sorts to your shell.
+They are each documented in the README file in their respective `plugins/` folder on the [Oh My Zsh wiki](https://github.com/ohmyzsh/ohmyzsh/wiki).
 
-- This script links `/mnt/wsl/` into your home directory. This is a folder shared between all the WSL2 machines on your computer.
+- This script links `/mnt/wsl/` into your home directory.
+This is a folder shared between all the WSL2 machines on your computer.
 
 ## How to install this script
 
-- Clone this repository, preferably to your home directory
+- Clone the repository, preferably to your home directory
 
 ```bash
 cd ~ &&\
@@ -26,7 +32,7 @@ git clone https://github.com/Smithienious/dotfiles.git
 
 ```bash
 cd ~/dotfiles
-source ./install.sh install
+source ./install.sh setup
 ```
 
 ## FAQ
@@ -35,7 +41,7 @@ source ./install.sh install
 
 It is a special folder shared between all running WSL2 machines on your PC.
 The `wsl` is actually a symbolic link from `/mnt/wsl/`.
-Microsoft does not have this documented for some reason.
+Microsoft does not have this folder documented for some reason.
 
 The content of this folder is lost if all machines are off, so use it wisely.
 
