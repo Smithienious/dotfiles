@@ -21,8 +21,8 @@ function update_upgrade {
 }
 
 function base_packages {
-  basepkgs=(curl dos2unix git git-lfs htop keychain less make most nano
-    openssl pinentry-tty rsync tree)
+  basepkgs=(curl dos2unix git git-lfs htop keychain less make man-db most
+    nano openssl pinentry-tty rsync tree)
 
   if [[ -x "$(command -v apt)" ]]; then
     sudo apt install -y "${basepkgs[@]}" shellcheck
@@ -96,6 +96,14 @@ function link_dotfiles {
 # https://www.gnu.org/software/bash/manual/html_node/Conditional-Constructs.html
 while [[ $# -gt 0 ]]; do
   case "$1" in
+  nobase)
+    update_upgrade
+    python_pyenv
+    omz_zsh
+    node_n
+    link_dotfiles
+    shift
+    ;;
   install | setup)
     update_upgrade
     base_packages

@@ -19,7 +19,7 @@ They are each documented in the README file in their respective `plugins/` folde
 - This script links `/mnt/wsl/` into your home directory.
 This is a folder shared between all the WSL2 machines on your computer.
 
-## How to install this script
+## How to install this config
 
 - Clone the repository, preferably to your home directory
 
