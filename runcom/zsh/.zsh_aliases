@@ -2,7 +2,6 @@
 # echo "$(basename $0)"
 
 # Shortcuts
-alias reload='command clear; exec $SHELL'
 alias rr='rm -rf'
 
 # Directory listing
@@ -33,7 +32,7 @@ alias unix2dosn='find . -type f -print0 | xargs -0 unix2dos'
 
 # Python venv
 alias vx='deactivate'
-function va() {
+function va {
   [[ -n "$*" ]] && lastEnv="${*: -1:1}" || lastEnv=".venv"
 
   if [[ ! -d "$lastEnv" && ! -L "$lastEnv" ]]; then
@@ -41,7 +40,7 @@ function va() {
     touch .env requirements.txt
 
     source "$lastEnv"/bin/activate
-    pip install pip-tools
+    pip install pip-tools python-dotenv
   else
     source "$lastEnv"/bin/activate
   fi
