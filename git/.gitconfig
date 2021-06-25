@@ -43,6 +43,7 @@ defaultBranch = main
 
 [push]
 default = simple
+followTags = true
 
 [rerere]
 enabled = 1
