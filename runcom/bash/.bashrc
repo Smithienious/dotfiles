@@ -119,10 +119,10 @@ if [[ -d "$HOME/.bin" ]]; then
   PATH="$HOME/.bin:$PATH"
 fi
 
+# Autorun file
+[[ -r /mnt/wsl/autorun.sh ]] && source /mnt/wsl/autorun.sh
+
 # Source the dotfiles (order matters)
 for DOTFILE in ~/.{bash_functions,path,env,bash_aliases,prompt,custom}; do
   [[ -f "$DOTFILE" ]] && source "$DOTFILE"
 done
-
-# Autorun file
-[[ -r /mnt/wsl/autorun.sh ]] && source /mnt/wsl/autorun.sh

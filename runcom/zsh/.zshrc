@@ -20,11 +20,6 @@ if [[ -d "$HOME/.bin" ]]; then
   PATH="$HOME/.bin:$PATH"
 fi
 
-# Source the dotfiles (order matters)
-for DOTFILE in ~/.{zsh_functions,path,env,zsh_aliases,prompt,custom}; do
-  [[ -f "$DOTFILE" ]] && source "$DOTFILE"
-done
-
 # Autorun file
 [[ -r /mnt/wsl/autorun.sh ]] && source /mnt/wsl/autorun.sh
 
@@ -151,3 +146,8 @@ source "$ZSH"/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Source the dotfiles (order matters)
+for DOTFILE in ~/.{zsh_functions,path,env,zsh_aliases,prompt,custom}; do
+  [[ -f "$DOTFILE" ]] && source "$DOTFILE"
+done
