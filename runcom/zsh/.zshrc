@@ -16,13 +16,13 @@ export N_PREFIX="$HOME/n"
 [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 
 # Set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.bin" ]; then
+if [[ -d "$HOME/.bin" ]]; then
   PATH="$HOME/.bin:$PATH"
 fi
 
 # Source the dotfiles (order matters)
 for DOTFILE in ~/.{zsh_functions,path,env,zsh_aliases,prompt,custom}; do
-  [ -f "$DOTFILE" ] && source "$DOTFILE"
+  [[ -f "$DOTFILE" ]] && source "$DOTFILE"
 done
 
 # Autorun file

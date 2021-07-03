@@ -55,8 +55,8 @@ alias dng='dotnet nuget'
 
 # Pretty log messages
 function _git_log_prettily() {
-  if [ -n "$1" ]; then
-    git log --pretty="$1"
+  if [[ -n "$1" ]]; then
+     git log --pretty="$1"
   fi
 }
 
@@ -361,12 +361,12 @@ function pyuserpaths() {
   # Get existing interpreters.
   local interps=()
   for target in "${targets[@]}"; do
-    [ "$(command -v "$target")" ] && interps+=("$target")
+    [[ "$(command -v "$target")" ]] && interps+=("$target")
   done
 
   # Check for a non-standard install directory.
   local user_base="${HOME}/.local"
-  [ "$PYTHONUSERBASE" ] && user_base=$PYTHONUSERBASE
+  [[ "$PYTHONUSERBASE" ]] && user_base=$PYTHONUSERBASE
 
   # Add version specific paths, if:
   #   it exists in the filesystem;
