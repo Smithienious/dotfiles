@@ -18,9 +18,6 @@ Use at your own risk!
 - This script comes bundled with plugins, allowing you to take advantage of functionality of many sorts to your shell.
 They are each documented in the README file in their respective `plugins/` folder on the [Oh My Zsh wiki](https://github.com/ohmyzsh/ohmyzsh/wiki).
 
-- This script links `/mnt/wsl/` into your home directory.
-This is a folder shared between all the WSL2 machines on your computer.
-
 ## How to install this config
 
 - Clone the repository, preferably to your home directory
@@ -39,10 +36,9 @@ source ./install.sh setup
 
 ## FAQ
 
-- What is the `wsl` folder in my home directory?
+- What is the `/mnt/wsl` folder?
 
 It is a special folder shared between all running WSL2 machines on your PC.
-The `wsl` is actually a symbolic link from `/mnt/wsl/`.
 Microsoft does not have this folder documented for some reason.
 
 The content of this folder is lost if all machines are off, so use it wisely.
