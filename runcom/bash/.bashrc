@@ -111,7 +111,8 @@ if [[ -z "$VIRTUAL_ENV" ]]; then
 fi
 
 # N
-export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
+export N_PREFIX="$HOME/n"
+[[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.bin" ]; then
@@ -122,3 +123,6 @@ fi
 for DOTFILE in ~/.{bash_functions,path,env,bash_aliases,prompt,custom}; do
   [ -f "$DOTFILE" ] && source "$DOTFILE"
 done
+
+# Autorun file
+[[ -r /mnt/wsl/autorun.sh ]] && source /mnt/wsl/autorun.sh
