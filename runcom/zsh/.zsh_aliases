@@ -21,9 +21,11 @@ alias djshp='python manage.py shell_plus'
 alias rm='rm -I'
 
 # Git
+alias gcd='git branch | tac | command grep -E "^(\+|\*)?\s*(development|develop|devel|dev)\s*$" | head -1 | command xargs -n 1 git checkout'
 alias gsc='GIT_COMMITTER_DATE="$(git show --format=%aD | head -1)"'
 alias guc='unset GIT_COMMITTER_DATE'
-alias gcd='git branch | tac | command grep -E "^(\+|\*)?\s*(development|develop|devel|dev)\s*$" | head -1 | command xargs -n 1 git checkout'
+alias gmd='git branch | tac | command grep -E "^(\+|\*)?\s*(development|develop|devel|dev)\s*$" | head -1 | command xargs -n 1 git merge'
+alias gmm='git merge $(git_main_branch)'
 alias grbd='git branch | tac | command grep -E "^(\+|\*)?\s*(development|develop|devel|dev)\s*$" | head -1 | command xargs -n 1 git rebase'
 
 # Recursive EOL replacement
