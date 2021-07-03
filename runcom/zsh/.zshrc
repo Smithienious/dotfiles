@@ -6,6 +6,28 @@
 # GnuPG pinentry
 export GPG_TTY=$(tty)
 
+# Pyenv
+if [[ -z "$VIRTUAL_ENV" ]]; then
+  eval "$(pyenv init -)"
+fi
+
+# N
+export N_PREFIX="$HOME/n"
+[[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
+
+# Set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.bin" ]; then
+  PATH="$HOME/.bin:$PATH"
+fi
+
+# Source the dotfiles (order matters)
+for DOTFILE in ~/.{zsh_functions,path,env,zsh_aliases,prompt,custom}; do
+  [ -f "$DOTFILE" ] && source "$DOTFILE"
+done
+
+# Autorun file
+[[ -r /mnt/wsl/autorun.sh ]] && source /mnt/wsl/autorun.sh
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -129,25 +151,3 @@ source "$ZSH"/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# Pyenv
-if [[ -z "$VIRTUAL_ENV" ]]; then
-  eval "$(pyenv init -)"
-fi
-
-# N
-export N_PREFIX="$HOME/n"
-[[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
-
-# Set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.bin" ]; then
-  PATH="$HOME/.bin:$PATH"
-fi
-
-# Source the dotfiles (order matters)
-for DOTFILE in ~/.{zsh_functions,path,env,zsh_aliases,prompt,custom}; do
-  [ -f "$DOTFILE" ] && source "$DOTFILE"
-done
-
-# Autorun file
-[[ -r /mnt/wsl/autorun.sh ]] && source /mnt/wsl/autorun.sh
