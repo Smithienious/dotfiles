@@ -61,8 +61,8 @@ function python_pyenv {
   eval "$(pyenv init --path)"
   eval "$(pyenv init -)"
 
-  pyenv install -s 3.9.5
-  pyenv global 3.9.5
+  pyenv install -s 3.9.6
+  pyenv global 3.9.6
   pip install --upgrade pip setuptools wheel
   pip install pipupgrade pygments
 }
