@@ -84,6 +84,10 @@ function omz_zsh {
   git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/plugins/zsh-autosuggestions
 }
 
+function backup_gitconfig {
+  cat ~/.gitconfig >>~/.gitconfig_local
+}
+
 function link_dotfiles {
   for DOTFILE in "$BASEDIR"/{git,system}/.[a-z]*; do ln -sfv "$DOTFILE" ~; done
   for DOTFILE in "$BASEDIR"/runcom/{ba,z}sh/.[a-z]*; do ln -sfv "$DOTFILE" ~; done
@@ -99,6 +103,7 @@ while [[ $# -gt 0 ]]; do
     python_pyenv
     omz_zsh
     node_n
+    backup_gitconfig
     link_dotfiles
     shift
     ;;
@@ -108,6 +113,7 @@ while [[ $# -gt 0 ]]; do
     python_pyenv
     omz_zsh
     node_n
+    backup_gitconfig
     link_dotfiles
     shift
     ;;
