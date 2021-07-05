@@ -12,5 +12,6 @@ function cleantmp {
   # shellcheck disable=SC2164
   cd "$CURDIR"
   echo "Cleaning up $TMPDIR"
-  command sudo rm -r $TMPDIR # need to add sudo here because git clones leave behind write-protected files
+  # command sudo rm -r $TMPDIR # need to add sudo here because git clones leave behind write-protected files
+  command rm -rf $TMPDIR
 }
