@@ -67,7 +67,7 @@ DISABLE_UPDATE_PROMPT="true"
 # export UPDATE_ZSH_DAYS=13
 
 # If pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
+DISABLE_MAGIC_FUNCTIONS="true"
 
 # Disable colors in ls.
 # DISABLE_LS_COLORS="true"
