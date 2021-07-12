@@ -14,6 +14,7 @@ alias djrun='python manage.py runserver'
 alias djsu='python manage.py createsuperuser'
 alias djmm='python manage.py makemigrations'
 alias djmig='python manage.py migrate'
+alias djtest='python manage.py test'
 alias djsh='python manage.py shell'
 alias djshp='python manage.py shell_plus'
 
