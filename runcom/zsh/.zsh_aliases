@@ -47,16 +47,14 @@ function va {
   [[ -n "$*" ]] && lastEnv="${*: -1:1}" || lastEnv=".venv"
 
   if [[ ! -d "$lastEnv" && ! -L "$lastEnv" ]]; then
-    python -m venv --system-site-packages --upgrade-deps "${@:-${lastEnv}}"
+    # python -m venv --system-site-packages --upgrade-deps "${@:-${lastEnv}}"
+    python -m venv --upgrade-deps "${@:-${lastEnv}}"
     touch .env requirements.txt
-
     source "$lastEnv"/bin/activate
-    pip install pip-tools python-dotenv
+    pip install --upgrade pip-tools python-dotenv wheel
   else
     source "$lastEnv"/bin/activate
   fi
-
-  echo "Activated $lastEnv"
 }
 
 # List declared aliases, functions, paths
