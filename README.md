@@ -43,23 +43,6 @@ Microsoft does not have this folder documented for some reason.
 
 The content of this folder is lost if all machines are off, so use it wisely.
 
-- How do I install a `pip` package in my virtual environment?
-
-The shortcut `va` calls `venv --system-site-packages`, thus preventing local installations of packages already available on the system site.
-You can use `--ignore-installed` flag to override this.
-
-```bash
-pip install --ignore-installed
-```
-
-- Git keeps ignoring my `.vscode` folder
-
-Create a `.gitignore` in your repository an add
-
-```text
-!.vscode/
-```
-
 ## Feedback
 
 Suggestions/improvements are [welcome and encouraged](https://github.com/Smithienious/dotfiles/issues)!
